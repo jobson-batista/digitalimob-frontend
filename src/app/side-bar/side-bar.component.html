@@ -1,0 +1,40 @@
+<div class="container">
+    <mat-toolbar>
+        <button mat-icon-button aria-label="Menu Principal" (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>Digital Imob</span>
+        <span class="spacer"></span>
+        <button mat-icon-button aria-label="Favoritos">
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+            <div class="content-side">
+                <div class="user-area">
+                    <img src="../../assets/man_avatar.png" width="120" alt="Imagem do corretor">
+                    <span>Bem-vindo de volta,</span>
+                    <span><strong>{{username}}</strong></span>
+                </div>
+                <span class="spacer-line"></span>
+                <div class="option">
+                    <a href="">
+                        <mat-icon>search</mat-icon>
+                        <span>Captação de Imóveis</span>
+                    </a>
+                </div>
+                <span class="spacer-line"></span>
+                <div class="option">
+                    <a href="">
+                        <mat-icon>exit_to_app</mat-icon>
+                        <span>Sair</span>
+                    </a>
+                </div>
+                <span class="spacer-line"></span>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content>CONTENT</mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
