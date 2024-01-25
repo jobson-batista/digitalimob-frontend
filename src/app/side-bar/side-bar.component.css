@@ -71,3 +71,12 @@ div img {
     text-decoration: none;
     align-items: center;
 }
+
+@media screen and (min-width: 900px) {
+	.dois {
+		background: #F90;
+	}
+	span.gt900 {
+		display: inline-block;
+	}
+}

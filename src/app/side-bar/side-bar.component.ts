@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { SideBarService } from './side-bar.service';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { CaptacaoPageComponent } from '../captacao-page/captacao-page.component';
 
 @Component({
   selector: 'app-side-bar',
@@ -12,7 +13,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    CaptacaoPageComponent
   ],
   providers: [
     SideBarService
@@ -22,8 +24,16 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class SideBarComponent  {
 
-  opened: boolean = true;
+  opened: boolean = window.innerWidth > 800;
+  username: string = 'Jobson Batista';
 
-  username: string = 'Jobson';
+  ngOnInit() {
+    this.opened = window.innerWidth > 800;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.opened = window.innerWidth > 800;
+  }
   
 }

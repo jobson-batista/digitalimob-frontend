@@ -1,0 +1,4 @@
+enum EnterprisesType {
+    RESIDENCIAL,
+    LOJA
+}

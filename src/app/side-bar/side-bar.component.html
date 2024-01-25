@@ -5,9 +5,11 @@
         </button>
         <span>Digital Imob</span>
         <span class="spacer"></span>
-        <button mat-icon-button aria-label="Favoritos">
-            <mat-icon>exit_to_app</mat-icon>
-        </button>
+        @if(!opened) {
+            <button mat-icon-button aria-label="Favoritos">
+                <mat-icon>exit_to_app</mat-icon>
+            </button>
+        }
     </mat-toolbar>
 
     <mat-sidenav-container>
@@ -35,6 +37,8 @@
                 <span class="spacer-line"></span>
             </div>
         </mat-sidenav>
-        <mat-sidenav-content>CONTENT</mat-sidenav-content>
+        <mat-sidenav-content>
+            <app-captacao-page></app-captacao-page>
+        </mat-sidenav-content>
     </mat-sidenav-container>
 </div>

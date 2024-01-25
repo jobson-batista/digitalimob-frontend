@@ -1,0 +1,45 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <mat-select id="state" formControlName="state" disableRipple>
+            @for (state of states; track state) {
+            <mat-option [value]="state">{{state}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <!-- <span class="spacer"></span> -->
+    <mat-form-field>
+        <mat-label>Cidade</mat-label>
+        <mat-select multiple id="cities" formControlName="cities">
+            @for (city of cities; track city) {
+            <mat-option [value]="city">{{city}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <!-- <span class="spacer"></span> -->
+    <mat-form-field>
+        <mat-label>Bairros</mat-label>
+        <mat-select multiple id="districts" formControlName="districts">
+            @for (district of districts; track district) {
+            <mat-option [value]="district">{{district}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <!-- <span class="spacer"></span> -->
+    @if (advancedSearch) {
+    <mat-form-field>
+        <mat-label>Preço Mínimo</mat-label>
+        <input matInput placeholder="Ex.: 1000" type="number" name="priceMin" formControlName="priceMin">
+    </mat-form-field>
+    <!-- <span class="spacer"></span> -->
+    <mat-form-field>
+        <mat-label>Preço Máximo</mat-label>
+        <input matInput placeholder="Ex.: 2000000" type="number" name="priceMax" formControlName="priceMax">
+    </mat-form-field>
+    }
+
+    <div>
+        <button mat-raised-button type="submit">Buscar</button>
+    </div>
+
+</form>

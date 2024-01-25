@@ -1,0 +1,21 @@
+.container {
+    height: 100%;
+}
+
+h1 {
+    /* padding-left: 1em; */
+    text-align: center;
+}
+
+.search-bar {
+    display: flex;
+    background-color: #fff;
+    height: 45%;
+}
+
+.card-list {
+    display: flex;
+    background-color: #dedede;
+    height: 45%;
+}
+
