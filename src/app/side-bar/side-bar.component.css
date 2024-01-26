@@ -61,7 +61,7 @@ div img {
 }
 
 .spacer-line {
-    border: 0.5px solid black;
+    border: 0.5px solid #dedede;
 }
 
 .option a {
@@ -72,11 +72,3 @@ div img {
     align-items: center;
 }
 
-@media screen and (min-width: 900px) {
-	.dois {
-		background: #F90;
-	}
-	span.gt900 {
-		display: inline-block;
-	}
-}

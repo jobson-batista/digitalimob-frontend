@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatDrawer, MatDrawerMode, MatSidenavModule} from '@angular/material/sidenav';
 import { SideBarService } from './side-bar.service';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,16 +24,30 @@ import { CaptacaoPageComponent } from '../captacao-page/captacao-page.component'
 })
 export class SideBarComponent  {
 
-  opened: boolean = window.innerWidth > 800;
+  opened: boolean = window.innerWidth < 960;
+  isMobile: boolean = window.innerWidth < 960;
+  sidenavMode: MatDrawerMode = 'side';
+
   username: string = 'Jobson Batista';
 
   ngOnInit() {
-    this.opened = window.innerWidth > 800;
+    this.verifyMobile();
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
-    this.opened = window.innerWidth > 800;
+    this.verifyMobile();
+  }
+
+  verifyMobile() {
+    this.isMobile = window.innerWidth < 960;
+    if(this.isMobile) {
+      this.opened = false;
+      this.sidenavMode = "over";
+    } else {
+      this.opened = true;
+      this.sidenavMode = "side";
+    }
   }
   
 }

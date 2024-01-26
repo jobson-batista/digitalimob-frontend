@@ -1,0 +1,25 @@
+.container {
+    padding: 0.5em 1em 0.5em 1em;
+    border-top: 1px solid #dedede;
+}
+
+.card-list {
+    display: flex;
+    background-color: #dedede;
+    height: 45%;
+}
+
+.logo {
+    background-image: url('https://www.neoempreendimentos.com.br/wp-content/themes/neoempreendimentos/assets/images/favicon.png');
+    background-size: cover;
+}
+
+.card {
+    max-width: 20em;
+    margin-bottom: 1em;
+    background-color: #dedede;
+}
+
+ul {
+    line-height: 1.5em;
+}

@@ -7,7 +7,7 @@
             }
         </mat-select>
     </mat-form-field>
-    <!-- <span class="spacer"></span> -->
+    
     <mat-form-field>
         <mat-label>Cidade</mat-label>
         <mat-select multiple id="cities" formControlName="cities">
@@ -16,7 +16,7 @@
             }
         </mat-select>
     </mat-form-field>
-    <!-- <span class="spacer"></span> -->
+
     <mat-form-field>
         <mat-label>Bairros</mat-label>
         <mat-select multiple id="districts" formControlName="districts">
@@ -25,16 +25,16 @@
             }
         </mat-select>
     </mat-form-field>
-    <!-- <span class="spacer"></span> -->
+    
     @if (advancedSearch) {
     <mat-form-field>
         <mat-label>Preço Mínimo</mat-label>
-        <input matInput placeholder="Ex.: 1000" type="number" name="priceMin" formControlName="priceMin">
+        <input matInput placeholder="Ex.: 1000" type="number" inputmode="numeric" name="priceMin" formControlName="priceMin">
     </mat-form-field>
-    <!-- <span class="spacer"></span> -->
+    
     <mat-form-field>
         <mat-label>Preço Máximo</mat-label>
-        <input matInput placeholder="Ex.: 2000000" type="number" name="priceMax" formControlName="priceMax">
+        <input matInput placeholder="Ex.: 2000000" type="number" inputmode="numeric" name="priceMax" formControlName="priceMax">
     </mat-form-field>
     }
 
