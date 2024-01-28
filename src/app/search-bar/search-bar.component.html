@@ -1,7 +1,7 @@
 <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
         <mat-label>Estado</mat-label>
-        <mat-select id="state" formControlName="state" disableRipple>
+        <mat-select id="state" formControlName="state" (selectionChange)="onOptionSelected($event)">
             @for (state of states; track state) {
             <mat-option [value]="state">{{state}}</mat-option>
             }

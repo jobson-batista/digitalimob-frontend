@@ -9,17 +9,23 @@
     height: 45%;
 }
 
-.logo {
-    background-image: url('https://www.neoempreendimentos.com.br/wp-content/themes/neoempreendimentos/assets/images/favicon.png');
-    background-size: cover;
-}
-
 .card {
     max-width: 20em;
     margin-bottom: 1em;
     background-color: #dedede;
+    
 }
 
 ul {
     line-height: 1.5em;
+    height: 10em;
+}
+
+.image {
+    height: 15em;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
 }

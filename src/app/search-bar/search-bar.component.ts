@@ -9,6 +9,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarService } from './search-bar.service';
+import { State } from '../models/State';
 
 @Component({
   selector: 'app-search-bar',
@@ -34,8 +35,8 @@ export class SearchBarComponent {
 
   constructor(private searchService: SearchBarService) { }
 
-  states: any = [];
-  cities: any[] = [];
+  states: string[] = [];
+  cities: any = [];
   districts: any[] = [];
 
   priceMin: number = 100000;
@@ -56,15 +57,36 @@ export class SearchBarComponent {
   }
 
   ngOnInit(): void {
-    this.searchService.findAllStates().subscribe((states)=>{
-      this.states = states;
+    this.searchService.findAllStates().subscribe({
+      next: (states: any) => {
+        for (let code in states) {
+          this.states.push(states[code]);
+        }
+      }, error: (err) => {
+        console.log(err.error.detail);
+      }
     });
-    this.cities = this.searchService.findAllCityByState('');
+    console.log(this.searchForm.get('state'))
+    //this.cities = this.searchService.findAllCityByState(this.searchForm.get('state'));
     this.districts = this.searchService.findAllDistrictsByCity('');
   }
 
   onSubmit(): void {
     console.log(this.searchForm.value);
+  }
+
+  onOptionSelected(event: any) {
+    const stateControl = this.searchForm.get('state');
+    if(stateControl) {
+      let value = stateControl.value ?? '';
+      this.searchService.findAllCityByState(value)?.subscribe({
+        next: cities => {
+          this.cities = cities;
+        }, error: err => {
+          console.log(err);
+        }
+      });
+    }
   }
 
 }

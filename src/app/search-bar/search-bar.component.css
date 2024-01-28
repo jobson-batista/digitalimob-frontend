@@ -26,6 +26,10 @@ mat-icon {
     color: #130a8f !important;
 }
 
+mat-select {
+    min-width: auto !important;   
+}
+
 .more-filters {
     display: flex;
     background-color: #fff !important;
