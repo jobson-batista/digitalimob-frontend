@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { MatSelectModule } from '@angular/material/select';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
@@ -37,7 +37,7 @@ export class SearchBarComponent {
 
   states: string[] = [];
   cities: any = [];
-  districts: any[] = [];
+  districts: any = [];
 
   priceMin: number = 100000;
   priceMax: number = 100000000;
@@ -66,26 +66,42 @@ export class SearchBarComponent {
         console.log(err.error.detail);
       }
     });
-    console.log(this.searchForm.get('state'))
+    //console.log(this.searchForm.get('state'))
     //this.cities = this.searchService.findAllCityByState(this.searchForm.get('state'));
-    this.districts = this.searchService.findAllDistrictsByCity('');
+    //this.districts = this.searchService.findAllDistrictsByCity([]);
   }
 
   onSubmit(): void {
     console.log(this.searchForm.value);
   }
 
-  onOptionSelected(event: any) {
-    const stateControl = this.searchForm.get('state');
-    if(stateControl) {
-      let value = stateControl.value ?? '';
-      this.searchService.findAllCityByState(value)?.subscribe({
-        next: cities => {
-          this.cities = cities;
-        }, error: err => {
-          console.log(err);
-        }
-      });
+  onOptionSelected(event: MatSelectChange, fieldForm: string) {
+    if (fieldForm === 'state') {
+      const stateControl = this.searchForm.get('state');
+      if (stateControl) {
+        let value = stateControl.value ?? '';
+        this.searchService.findAllCityByState(value)?.subscribe({
+          next: cities => {
+            this.cities = cities;
+          }, error: err => {
+            console.log(err);
+          }
+        });
+      }
+    } else if(fieldForm === 'city') {
+      const stateControl = this.searchForm.get('state');
+      const cityControl = this.searchForm.get('cities');
+      if(cityControl && stateControl) {
+        let state = stateControl.value ?? '';
+        let cities = cityControl.value ?? [''];
+        this.searchService.findAllDistrictsByCity(state, cities).subscribe({
+          next: districts => {
+            this.districts = districts;
+          }, error: err => {
+            console.log(err);
+          }
+        });
+      }
     }
   }
 
