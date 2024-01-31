@@ -38,11 +38,9 @@ export class SearchBarService {
   findAllDistrictsByCity(state:string, cities: string[]) {
     let citiesCodes: string[] = [];
     for (let city in cities) {
-      console.log(this.u.removeAccents(cities[city]).replace(' ','_').toUpperCase());
       citiesCodes.push(this.u.removeAccents(cities[city]).replace(' ','_').toUpperCase());
     }
     let params = {params: new HttpParams().set('cities',citiesCodes.toString())}
-    //console.log(this.getStateCode(state));
     return this.http.get(e.API_URL + e.ADDRESS_URL + e.STATES_URL+'/'+this.getStateCode(state)+e.DISTRICTS_URL, params);
   }
 
@@ -57,6 +55,37 @@ export class SearchBarService {
       }
     }
     return null;
+  }
+
+  search(filters: any) {
+    let tempCitiesCodes = [];
+    let tempDistrictsCodes = [];
+    let body: {
+      citiesCodes: string[],
+      districtCodes: string[],
+      stateCode: any,
+      priceMin: number,
+      priceMax: number
+    } = {
+      citiesCodes: [],
+      districtCodes: [],
+      stateCode: this.getStateCode(filters['state']),
+      priceMin: filters['priceMin'],
+      priceMax: filters['priceMax']
+    };
+    
+    for(let city in filters['cities']) {
+      tempCitiesCodes.push(this.u.removeAccents(filters['cities'][city]).replace(' ', '_').toUpperCase());
+    }
+
+    for(let district in filters['districts']) {
+      tempDistrictsCodes.push(this.u.removeAccents(filters['districts'][district]).replace(' ', '_').toUpperCase());
+    }
+
+    body.citiesCodes = tempCitiesCodes;
+    body.districtCodes = tempDistrictsCodes;
+
+    return this.http.post(e.API_URL+e.ENTERPRISE_URL+e.SEARCH_URL, body);
   }
 
 }

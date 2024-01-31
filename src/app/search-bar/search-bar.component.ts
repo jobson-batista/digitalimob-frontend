@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -9,7 +9,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarService } from './search-bar.service';
-import { State } from '../models/State';
 
 @Component({
   selector: 'app-search-bar',
@@ -66,13 +65,16 @@ export class SearchBarComponent {
         console.log(err.error.detail);
       }
     });
-    //console.log(this.searchForm.get('state'))
-    //this.cities = this.searchService.findAllCityByState(this.searchForm.get('state'));
-    //this.districts = this.searchService.findAllDistrictsByCity([]);
   }
 
   onSubmit(): void {
-    console.log(this.searchForm.value);
+    this.searchService.search(this.searchForm.value).subscribe({
+      next: (result) => {
+        console.log(result);
+      }, error: err => {
+        console.log(err);
+      }
+    });
   }
 
   onOptionSelected(event: MatSelectChange, fieldForm: string) {

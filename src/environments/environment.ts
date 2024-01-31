@@ -10,5 +10,6 @@ export const environment = {
     //Address
     ADDRESS_URL: "/address",
     STATES_URL: "/states",
-    DISTRICTS_URL: "/districts"
+    DISTRICTS_URL: "/districts",
+    SEARCH_URL: "/search"
   };
