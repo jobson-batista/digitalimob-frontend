@@ -9,6 +9,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarService } from './search-bar.service';
+import { SharedDataService } from '../shared/shared-data.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -32,7 +33,10 @@ import { SearchBarService } from './search-bar.service';
 })
 export class SearchBarComponent {
 
-  constructor(private searchService: SearchBarService) { }
+  constructor(
+    private searchService: SearchBarService,
+    private sharedDataService: SharedDataService
+    ) { }
 
   states: string[] = [];
   cities: any = [];
@@ -70,7 +74,7 @@ export class SearchBarComponent {
   onSubmit(): void {
     this.searchService.search(this.searchForm.value).subscribe({
       next: (result) => {
-        console.log(result);
+        this.sharedDataService.updateData(result);
       }, error: err => {
         console.log(err);
       }

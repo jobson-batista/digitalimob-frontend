@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CardListService } from './card-list-service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SharedDataService } from '../../shared/shared-data.service';
 
 @Component({
   selector: 'app-card-list',
@@ -27,7 +28,10 @@ export class CardListComponent {
   enterpriseList: any = [];
   loading: boolean = true;
 
-  constructor(private service: CardListService) { }
+  constructor(
+    private service: CardListService,
+    private sharedDataService: SharedDataService
+    ) { }
 
   ngOnInit() {
     this.verifyMobile();
@@ -37,6 +41,11 @@ export class CardListComponent {
         this.loading = false;
       }, error: (err) => {
         console.log(err.error.detail);
+      }
+    });
+    this.sharedDataService.getData().subscribe({
+      next: (result) => {
+        this.enterpriseList = result;
       }
     });
   }
