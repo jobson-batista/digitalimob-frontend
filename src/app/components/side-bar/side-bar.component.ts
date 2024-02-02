@@ -1,10 +1,13 @@
 import { Component, HostListener } from '@angular/core';
-import { MatDrawer, MatDrawerMode, MatSidenavModule} from '@angular/material/sidenav';
+import { MatDrawerMode, MatSidenavModule} from '@angular/material/sidenav';
 import { SideBarService } from './side-bar.service';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { CaptacaoPageComponent } from '../captacao-page/captacao-page.component';
+import { CaptacaoComponent } from '../../pages/captacao/captacao.component';
+import { CreateComponent } from '../../pages/enterprise/create/create.component';
+import { ContentAreaComponent } from '../content-area/content-area.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -14,7 +17,10 @@ import { CaptacaoPageComponent } from '../captacao-page/captacao-page.component'
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    CaptacaoPageComponent
+    CaptacaoComponent,
+    CreateComponent,
+    RouterModule,
+    ContentAreaComponent
   ],
   providers: [
     SideBarService

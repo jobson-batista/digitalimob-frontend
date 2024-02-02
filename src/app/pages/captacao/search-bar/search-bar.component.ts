@@ -9,7 +9,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarService } from './search-bar.service';
-import { SharedDataService } from '../shared/shared-data.service';
+import { SharedDataService } from '../../../shared/shared-data.service';
 
 @Component({
   selector: 'app-search-bar',

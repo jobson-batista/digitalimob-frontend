@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { environment as e } from '../../environments/environment';
-import { Utils } from '../utils/utils';
-import { StatesCodes } from '../enums/StatesCodes';
+import { environment as e } from '../../../../environments/environment';
+import { Utils } from '../../../utils/utils';
+import { StatesCodes } from '../../../enums/StatesCodes';
 
 @Injectable({
   providedIn: 'root'

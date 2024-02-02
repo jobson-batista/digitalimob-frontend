@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CardListService } from './card-list-service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { SharedDataService } from '../../shared/shared-data.service';
+import { SharedDataService } from '../../../shared/shared-data.service';
 
 @Component({
   selector: 'app-card-list',

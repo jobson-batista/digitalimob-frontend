@@ -3,8 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { SideBarComponent } from './side-bar/side-bar.component';
-import { SideBarService } from './side-bar/side-bar.service';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { SideBarService } from './components/side-bar/side-bar.service';
 @Component({
   selector: 'app-root',
   standalone: true,

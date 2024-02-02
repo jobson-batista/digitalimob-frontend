@@ -22,9 +22,16 @@
                 </div>
                 <span class="spacer-line"></span>
                 <div class="option">
-                    <a href="">
+                    <a routerLink="/captacao">
                         <mat-icon>search</mat-icon>
                         <span>Captação de Imóveis</span>
+                    </a>
+                </div>
+                <span class="spacer-line"></span>
+                <div class="option">
+                    <a routerLink="/adicionar-empreendimento">
+                        <mat-icon>add_circle_outline</mat-icon>
+                        <span>Adicionar Empreendimento</span>
                     </a>
                 </div>
                 <span class="spacer-line"></span>
@@ -38,7 +45,7 @@
             </div>
         </mat-sidenav>
         <mat-sidenav-content>
-            <app-captacao-page></app-captacao-page>
+            <app-content-area></app-content-area>
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>

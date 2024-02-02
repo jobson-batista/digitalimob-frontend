@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CaptacaoPageComponent } from './captacao-page.component';
+import { ContentAreaComponent } from './content-area.component';
 
-describe('CaptacaoPageComponent', () => {
-  let component: CaptacaoPageComponent;
-  let fixture: ComponentFixture<CaptacaoPageComponent>;
+describe('ContentAreaComponent', () => {
+  let component: ContentAreaComponent;
+  let fixture: ComponentFixture<ContentAreaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CaptacaoPageComponent]
+      imports: [ContentAreaComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CaptacaoPageComponent);
+    fixture = TestBed.createComponent(ContentAreaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
