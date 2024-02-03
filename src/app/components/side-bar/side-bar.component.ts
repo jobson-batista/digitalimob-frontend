@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
-import { MatDrawerMode, MatSidenavModule} from '@angular/material/sidenav';
+import { MatDrawerMode, MatSidenavModule } from '@angular/material/sidenav';
 import { SideBarService } from './side-bar.service';
-import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CaptacaoComponent } from '../../pages/captacao/captacao.component';
@@ -28,7 +28,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css'
 })
-export class SideBarComponent  {
+export class SideBarComponent {
 
   opened: boolean = window.innerWidth < 960;
   isMobile: boolean = window.innerWidth < 960;
@@ -45,15 +45,21 @@ export class SideBarComponent  {
     this.verifyMobile();
   }
 
-  verifyMobile() {
+  verifyMobile(): boolean {
     this.isMobile = window.innerWidth < 960;
-    if(this.isMobile) {
+    if (this.isMobile) {
       this.opened = false;
       this.sidenavMode = "over";
+      return true;
     } else {
       this.opened = true;
       this.sidenavMode = "side";
+      return false;
     }
   }
-  
+
+  closeSideBar() {
+    if(this.verifyMobile()) this.opened = false;
+  }
+
 }

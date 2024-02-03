@@ -29,3 +29,13 @@ ul {
     display: flex;
     justify-content: center;
 }
+
+button {
+    background-color: #271bcb !important;
+    color: #fff !important;
+}
+
+mat-card-actions {
+    padding: 0em 1em 1em 1em;
+    justify-content: space-between;
+}

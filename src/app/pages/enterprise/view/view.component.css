@@ -1,21 +1,43 @@
-.container {
-    padding: 1em 1em 1em 1em;
+h1 {
+    text-align: center !important;
 }
 
 .container-img {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    height: 20em;
+    padding: 1em 0em 1em 0em;
 }
 
-.container img {
+.container-img img {
+    max-width: 100%; /* Certifica-se de que a imagem não ultrapasse a largura da div */
+    max-height: 100%; /* Certifica-se de que a imagem não ultrapasse a altura da div */
+    width: auto; /* Faz com que a largura da imagem seja ajustada automaticamente */
+    height: auto; /* Faz com que a altura da imagem seja ajustada automaticamente */
+}
+
+h2 {
+    text-align: left;
+}
+
+.header {
+    padding: 1em 1em 1em 1em;
+}
+
+.sub-header {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+}
+
+.btnGroup {
+    margin-left: auto;
+}
+
+div img {
     max-width: 30%;
     height: auto;
-}
-
-h1, h2 {
-    text-align: left;
 }
 
 input {
@@ -24,4 +46,34 @@ input {
 
 mat-form-field {
     padding: 0em 1em 0em 1em;
+}
+
+mat-grid-list {
+    border-top: 1px solid #dedede;
+}
+
+button {
+    color: #fff !important;
+    background-color: #271bcb !important;
+    margin-right: 1em;
+    width: 19em;
+}
+
+@media screen and (max-width: 960px) {
+    .sub-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    button {
+        margin-top: 1em;
+    }
+
+    .header {
+        align-items: center;
+    }
+
+    mat-grid-list {
+        text-align: center;
+    }
 }

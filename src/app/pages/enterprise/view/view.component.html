@@ -1,10 +1,19 @@
-<div class="container">
-    <h1>Detalhes do Empreendimento</h1>
-    <div class="container-img">
-        <img [src]="enterprise.imageURL" alt="Fotos do Empreendimento">
+<div>
+    <div class="header">
+        <h1>Detalhes do Empreendimento</h1>
+        <div class="container-img">
+            <img [src]="enterprise.imageURL" alt="Fotos do Empreendimento">
+        </div>
+        <div class="sub-header">
+            <h2>{{ enterprise.name }} - {{ enterprise.constructionCompany }}</h2>
+            <div class="btnGroup">
+                <button mat-raised-button><mat-icon>cloud_download</mat-icon><strong>Tabela de Preços</strong></button>
+                <button mat-raised-button><mat-icon> local_phone</mat-icon><strong>Verificar Disponibilidade</strong></button>
+            </div>
+        </div>
     </div>
-    <h2>{{ enterprise.name }}  - {{ enterprise.constructionCompany }}</h2>
-    <mat-grid-list [cols]="cols" rowHeight="30em">
+
+    <mat-grid-list [cols]="cols" [rowHeight]="rowHeight">
         <mat-grid-tile>
             <form [formGroup]="viewForm">
                 <mat-form-field>
@@ -46,8 +55,7 @@
             </form>
         </mat-grid-tile>
         <mat-grid-tile>
-            <!-- mapa -->
-            <p>MAPA</p>
+            <app-map [lon]="-34.861" [lat]="-7.11532"></app-map>
         </mat-grid-tile>
     </mat-grid-list>
 </div>

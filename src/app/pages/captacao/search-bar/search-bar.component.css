@@ -11,7 +11,11 @@ form {
 
 button {
     color: #fff !important;
-    background-color: #130a8f !important;
+    background-color: #271bcb !important;
+}
+
+mat-icon {
+    color: #fff !important;
 }
 
 .spacer {

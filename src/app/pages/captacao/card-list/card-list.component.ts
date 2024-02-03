@@ -7,6 +7,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedDataService } from '../../../shared/shared-data.service';
 import { Router } from '@angular/router';
 import { Enterprise } from '../../../models/Enterprise';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-card-list',
@@ -15,7 +16,8 @@ import { Enterprise } from '../../../models/Enterprise';
     MatCardModule,
     MatButtonModule,
     MatGridListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule
   ],
   providers: [
     CardListService
@@ -34,7 +36,7 @@ export class CardListComponent {
     private service: CardListService,
     private sharedDataService: SharedDataService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.verifyMobile();
@@ -70,6 +72,6 @@ export class CardListComponent {
   }
 
   toDetails(enterprise: Enterprise) {
-    this.router.navigate(['detalhes-do-empreendimento'], {state: enterprise});
+    this.router.navigate(['detalhes-do-empreendimento'], { state: enterprise });
   }
 }

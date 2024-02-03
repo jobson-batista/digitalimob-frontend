@@ -8,7 +8,7 @@
     <mat-grid-list [cols]="colsGrid" rowHeight="35em">
         @for(enterprise of enterpriseList; track enterprise.id) {
         <mat-grid-tile>
-            <mat-card class="card" onclick="toDetails()">
+            <mat-card class="card">
                 <mat-card-header>
                     <div mat-card-avatar
                         style="background-image: url({{enterprise.logoConstructionCompanyURL}});background-size: cover;">
@@ -35,7 +35,8 @@
                     </ul>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-raised-button (click)="toDetails(enterprise)" >CAPTAR</button>
+                    <button mat-raised-button (click)="toDetails(enterprise)" ><mat-icon aria-hidden="false" aria-label="Ver detalhes do empreendimento">remove_red_eye</mat-icon>Detalhes</button>
+                    <button mat-raised-button click="window.alert('Favoritou!')" ><mat-icon aria-hidden="false" aria-label="Adicionar aos Favoritos">favorite</mat-icon>Favoritos</button>
                 </mat-card-actions>
             </mat-card>
         </mat-grid-tile>
