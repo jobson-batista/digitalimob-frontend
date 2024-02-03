@@ -1,4 +1,7 @@
-class Enterprise {
+import { Address } from './Address';
+import { EnterprisesType } from '../enums/EnterprisesType';
+
+export class Enterprise {
     constructionCompany: string;
     type: EnterprisesType;
     roomMin: number;

@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>Detalhes do Empreendimento</h1>
+    <div class="container-img">
+        <img [src]="enterprise.imageURL" alt="Fotos do Empreendimento">
+    </div>
+    <h2>{{ enterprise.name }}  - {{ enterprise.constructionCompany }}</h2>
+    <mat-grid-list [cols]="cols" rowHeight="30em">
+        <mat-grid-tile>
+            <form [formGroup]="viewForm">
+                <mat-form-field>
+                    <mat-label>Endereço</mat-label>
+                    <input matInput type="text" formControlName="address" readonly>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Bairro</mat-label>
+                    <input matInput type="text" formControlName="district" readonly>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Cidade</mat-label>
+                    <input matInput type="text" formControlName="city" readonly>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Estado</mat-label>
+                    <input matInput type="text" formControlName="state" readonly>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Preço</mat-label>
+                    <input matInput type="text" formControlName="price" readonly>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Preço m<sup>2</sup></mat-label>
+                    <input matInput type="text" formControlName="pricem2" readonly>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Área m<sup>2</sup></mat-label>
+                    <input matInput type="text" formControlName="area" readonly>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Quartos</mat-label>
+                    <input matInput type="text" formControlName="room" readonly>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Tipo</mat-label>
+                    <input matInput type="text" formControlName="type" readonly>
+                </mat-form-field>
+            </form>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <!-- mapa -->
+            <p>MAPA</p>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

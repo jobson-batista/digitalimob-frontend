@@ -5,6 +5,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { CardListService } from './card-list-service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedDataService } from '../../../shared/shared-data.service';
+import { Router } from '@angular/router';
+import { Enterprise } from '../../../models/Enterprise';
 
 @Component({
   selector: 'app-card-list',
@@ -30,7 +32,8 @@ export class CardListComponent {
 
   constructor(
     private service: CardListService,
-    private sharedDataService: SharedDataService
+    private sharedDataService: SharedDataService,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -64,5 +67,9 @@ export class CardListComponent {
     } else {
       this.colsGrid = 3;
     }
+  }
+
+  toDetails(enterprise: Enterprise) {
+    this.router.navigate(['detalhes-do-empreendimento'], {state: enterprise});
   }
 }

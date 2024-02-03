@@ -66,7 +66,7 @@ export class SearchBarComponent {
           this.states.push(states[code]);
         }
       }, error: (err) => {
-        console.log(err.error.detail);
+        console.log(err);
       }
     });
   }

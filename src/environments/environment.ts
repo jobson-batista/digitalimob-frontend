@@ -2,7 +2,7 @@ export const environment = {
     production: false,
     
     /** Endpoints da API */
-    API_URL: "http://localhost:8080/v1/api",
+    API_URL: "http://192.168.0.3:8080/v1/api",
  
     // Enterprise
     ENTERPRISE_URL: "/enterprises",

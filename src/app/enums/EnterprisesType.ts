@@ -1,4 +1,4 @@
-enum EnterprisesType {
+export enum EnterprisesType {
     RESIDENCIAL,
     LOJA
 }

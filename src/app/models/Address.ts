@@ -1,4 +1,4 @@
-class Address {
+export class Address {
     street: string;
     number: string;
     district: string;

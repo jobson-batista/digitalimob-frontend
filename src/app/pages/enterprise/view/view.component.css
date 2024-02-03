@@ -1,0 +1,27 @@
+.container {
+    padding: 1em 1em 1em 1em;
+}
+
+.container-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container img {
+    max-width: 30%;
+    height: auto;
+}
+
+h1, h2 {
+    text-align: left;
+}
+
+input {
+    cursor: not-allowed;
+}
+
+mat-form-field {
+    padding: 0em 1em 0em 1em;
+}
