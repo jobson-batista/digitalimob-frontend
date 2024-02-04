@@ -9,6 +9,7 @@ import { Feature } from 'ol';
 import { Point } from 'ol/geom';
 import Icon from 'ol/style/Icon';
 import Style from 'ol/style/Style';
+import * as control from 'ol/control';
 
 @Component({
   selector: 'app-map',
@@ -25,6 +26,11 @@ export class MapComponent implements OnInit {
   @Input()
   lat: number = -7.11532;
 
+  iconLabel: HTMLDivElement = document.createElement('div');
+  
+  constructor() {
+    this.iconLabel.innerHTML = '<img height="18" style="display: flex; align-items: center; margin: auto; opacity: 0.6;" src="../../../assets/center.png">';
+  }
 
   public map!: Map;
 
@@ -38,9 +44,10 @@ export class MapComponent implements OnInit {
         ],
         target: 'map',
         view: new View({
-          center: olProj.transform([-34.861, -7.11532], 'EPSG:4326', 'EPSG:3857'),
+          center: olProj.transform([this.lon, this.lat], 'EPSG:4326', 'EPSG:3857'),
           zoom: 16,
-          maxZoom: 20
+          maxZoom: 20,
+          resolution: 2
         })
       });
 
@@ -62,6 +69,15 @@ export class MapComponent implements OnInit {
       });
       marker.setStyle(iconStyle);
       vectorLayer.getSource()?.addFeature(marker);
+
+      let grau = 0.0026;
+      /* Adicionar controle para Centralizar o mapa ao marcador */
+      let centerControl = new control.ZoomToExtent({
+        extent: olProj.transformExtent([this.lon - grau, this.lat - grau, this.lon + grau, this.lat + grau], 'EPSG:4326', 'EPSG:3857'), 
+        label: this.iconLabel,
+        tipLabel: 'Centralizar Mapa'
+      });
+      this.map.addControl(centerControl);
     } catch (error) {
       console.log(error);
     }
