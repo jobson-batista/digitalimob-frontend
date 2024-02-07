@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { CreateComponent } from './pages/enterprise/create/create.component';
 import { CaptacaoComponent } from './pages/captacao/captacao.component';
 import { ViewComponent } from './pages/enterprise/view/view.component';
+import { CreateService } from './pages/enterprise/create/create.service';
 
 export const routes: Routes = [
     { path: 'captacao', component: CaptacaoComponent },

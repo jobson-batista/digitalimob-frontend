@@ -1,1 +1,114 @@
-<p>create works!</p>
+<div class="container">
+    <h1>Adicionar Empreendimento</h1>
+    <form [formGroup]="formEnterprise" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <mat-label>Nome do Empreendimento</mat-label>
+            <input matInput type="text" required formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Descrição</mat-label>
+            <input matInput type="text" required formControlName="description">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nome da Construtora</mat-label>
+            <input matInput type="text" required [matAutocomplete]="autoConstruction" formControlName="constructionName">
+            <mat-autocomplete #autoConstruction="matAutocomplete">
+                @for (c of resultCompanies; track c) {
+                <mat-option [value]="c">{{c}}</mat-option>
+                }
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Tipo do Empreendimento</mat-label>
+            <input matInput #auto type="text" required [matAutocomplete]="autoType" formControlName="enterpriseType">
+            <mat-autocomplete #autoType="matAutocomplete">
+                @for ( type of formatTypes(); track type) {
+                <mat-option [value]="type">{{type}}</mat-option>
+                }
+            </mat-autocomplete>
+        </mat-form-field>
+        <h3>Endereço</h3>
+        <mat-form-field formGroupName="address">
+            <mat-label for="cep">CEP</mat-label>
+            <input matInput id="cep" type="text" required formControlName="cep">
+        </mat-form-field>
+        <mat-form-field formGroupName="address">
+            <mat-label>Estado</mat-label>
+            <input matInput #auto type="text" required [matAutocomplete]="autoState" formControlName="state">
+            <mat-autocomplete #autoState="matAutocomplete">
+                @for ( type of formatTypes(); track type) {
+                <mat-option [value]="type">{{type}}</mat-option>
+                }
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field formGroupName="address">
+            <mat-label>Cidade</mat-label>
+            <input matInput #auto type="text" required [matAutocomplete]="autoCity" formControlName="city">
+            <mat-autocomplete #autoCity="matAutocomplete">
+                @for ( type of formatTypes(); track type) {
+                <mat-option [value]="type">{{type}}</mat-option>
+                }
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field formGroupName="address">
+            <mat-label>Bairro</mat-label>
+            <input matInput #auto type="text" required [matAutocomplete]="autoDistrict" formControlName="district">
+            <mat-autocomplete #autoDistrict="matAutocomplete">
+                @for ( type of formatTypes(); track type) {
+                <mat-option [value]="type">{{type}}</mat-option>
+                }
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field formGroupName="address">
+            <mat-label>Logradouro/Rua</mat-label>
+            <input matInput type="text" required formControlName="street">
+        </mat-form-field>
+        <mat-form-field formGroupName="address">
+            <mat-label>Número</mat-label>
+            <input matInput type="number" formControlName="number">
+        </mat-form-field>
+        <h3>Características do Empreendimento</h3>
+        <h5>Quartos</h5>
+        <mat-form-field>
+            <mat-label>A partir de</mat-label>
+            <input matInput type="number" formControlName="roomMin">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Até</mat-label>
+            <input matInput type="number" formControlName="roomMax">
+        </mat-form-field>
+        <h5>Área m<sup>2</sup></h5>
+        <mat-form-field>
+            <mat-label>A partir de</mat-label>
+            <input matInput type="number" formControlName="sizeMin">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Até</mat-label>
+            <input matInput type="number" formControlName="sizeMax">
+        </mat-form-field>
+        <h5>Suíte</h5>
+        <mat-form-field>
+            <mat-label>A partir de</mat-label>
+            <input matInput type="number" formControlName="suiteMin">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Até</mat-label>
+            <input matInput type="number" formControlName="suiteMax">
+        </mat-form-field>
+        <h5>Vagas de Garagem</h5>
+        <mat-form-field>
+            <mat-label>A partir de</mat-label>
+            <input matInput type="number" formControlName="garageMin">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Até</mat-label>
+            <input matInput type="number" formControlName="garageMax">
+        </mat-form-field>
+        <h5>Preço (R$)</h5>
+        <mat-form-field>
+            <mat-label>A partir de</mat-label>
+            <input placeholder="Ex. 550.000" matInput type="number" formControlName="priceMin">
+        </mat-form-field>
+        <button class="button" mat-raised-button type="submit">Adicionar</button>
+    </form>
+</div>

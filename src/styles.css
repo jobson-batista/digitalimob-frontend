@@ -11,6 +11,8 @@ span {
 }
 html, body { height: 100%; }
 
-button {
+.button {
     font-family: 'Roboto', sans-serif !important;
+    color: #fff !important;
+    background-color: #271bcb !important;
 }
