@@ -7,6 +7,8 @@ import { CreateService } from './create.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EnterprisesType } from '../../../enums/EnterprisesType';
 import { MatButtonModule } from '@angular/material/button';
+import {TextFieldModule} from '@angular/cdk/text-field';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-create',
@@ -17,17 +19,21 @@ import { MatButtonModule } from '@angular/material/button';
     MatAutocompleteModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    TextFieldModule,
+    NgxMaskDirective
   ],
   providers: [
-    CreateService
+    CreateService,
+    provideNgxMask()
   ],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css'
 })
 export class CreateComponent {
 
-  constructor(private createService: CreateService) { }
+  constructor(private createService: CreateService) {
+  }
 
   companies: any[] = [];
   resultCompanies: any[] = ['Alliance', 'NEO', 'DaTerra'];
@@ -85,6 +91,20 @@ export class CreateComponent {
 
   onSubmit() {
     console.log(this.formEnterprise.value);
+  }
+
+  getAddress() {
+    let value = this.formEnterprise.controls['address'].controls['cep'].value;
+    if(value !== null && value.length === 8) {
+      this.createService.getAddressByCep(value)?.subscribe({
+        next: address => {
+          console.log(address);
+          //this.formEnterprise.controls['address'].controls['street'].setValue();
+        }, error: err => {
+          console.log(err);
+        }
+      });
+    }
   }
 
 }

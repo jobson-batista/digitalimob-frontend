@@ -1,3 +1,32 @@
 input[type=number]::-webkit-inner-spin-button { 
     -webkit-appearance: none;  /* Remover setas do input type=number */ 
 }
+
+.description {
+    width: 20em;
+}
+
+textarea {
+    resize: none;
+}
+
+.container {
+    padding: 1em 1em 1em 1em;
+}
+
+mat-form-field {
+    margin-left: 1em;
+}
+
+mat-form-field span {
+    color: red;
+    font-size: 0.8em;
+}
+
+.name {
+    width: 20em;
+}
+
+.type {
+    width: 15em;
+}
