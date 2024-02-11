@@ -12,7 +12,7 @@
             <mat-label>Nome da Construtora</mat-label>
             <input matInput type="text" required [matAutocomplete]="autoConstruction" formControlName="constructionName">
             <mat-autocomplete #autoConstruction="matAutocomplete">
-                @for (c of resultCompanies; track c) {
+                @for (c of companies; track c) {
                 <mat-option [value]="c">{{c}}</mat-option>
                 }
             </mat-autocomplete>
@@ -115,6 +115,9 @@
             <mat-label>A partir de</mat-label>
             <input placeholder="Ex. 550.000" matInput type="number" formControlName="priceMin">
         </mat-form-field>
-        <button class="button" mat-raised-button type="submit">Adicionar</button>
+        <div>
+            <p-toast></p-toast>
+            <button class="button" (click)="showToast()" mat-raised-button type="submit">Adicionar</button>
+        </div>
     </form>
 </div>

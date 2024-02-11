@@ -17,7 +17,7 @@ export class CreateService {
   }
 
   getAddressByCep(cep: string) {
-    console.log(this.VIACEP_API_URL+'/'+cep+JSON);
+    console.log(this.VIACEP_API_URL+'/'+cep+this.JSON);
     if(cep.length === 8) {
       return this.http.get(this.VIACEP_API_URL+'/'+cep+this.JSON);
     } 

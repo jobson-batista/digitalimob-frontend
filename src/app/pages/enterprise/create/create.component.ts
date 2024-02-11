@@ -9,6 +9,9 @@ import { EnterprisesType } from '../../../enums/EnterprisesType';
 import { MatButtonModule } from '@angular/material/button';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { StatesBrazil } from '../../../enums/StatesBrazil';
+import { ToastModule as primeng } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-create',
@@ -21,22 +24,26 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     ReactiveFormsModule,
     MatButtonModule,
     TextFieldModule,
-    NgxMaskDirective
+    NgxMaskDirective,
+    primeng
   ],
   providers: [
     CreateService,
-    provideNgxMask()
+    provideNgxMask(),
+    MessageService
   ],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css'
 })
 export class CreateComponent {
 
-  constructor(private createService: CreateService) {
+  constructor(
+    private createService: CreateService,
+    private messageService: MessageService
+    ) {
   }
 
   companies: any[] = [];
-  resultCompanies: any[] = ['Alliance', 'NEO', 'DaTerra'];
   enterpriseTypes: any[] = Object.values(EnterprisesType);
   formEnterprise = new FormGroup({
     name: new FormControl(''),
@@ -63,22 +70,18 @@ export class CreateComponent {
   });
 
   ngOnInit(): void {
-    //console.log(this.enterpriseTypes.filter(type => typeof type != 'number') as string[])
-    // this.createService.findAllConstructionCompanies().subscribe({
-    //   next: companiesList  => {
-    //     this.companies.push(companiesList);
-    //     let cont = 0;
-    //     this.companies.forEach(c => {
-    //       let item: Map<String, String> = new Map<String, String>();
-    //       item.set('name',c[cont]['name']);
-    //       item.set('id',c[cont]['id']);
-    //       this.resultCompanies.push(item);
-    //       cont += 1;
-    //     });
-    //   }, error: error => {
-    //     console.log(error);
-    //   }
-    // });
+    this.createService.findAllConstructionCompanies().subscribe({
+      next: (companiesList: any)  => {
+        for(let c in companiesList) {
+          if(!this.companies.includes(companiesList[c].name)) {
+            this.companies.push(companiesList[c].name);
+          }
+        }
+        console.log(this.companies);
+      }, error: error => {
+        console.log(error);
+      }
+    });
   }
 
   formatTypes() {
@@ -97,9 +100,12 @@ export class CreateComponent {
     let value = this.formEnterprise.controls['address'].controls['cep'].value;
     if(value !== null && value.length === 8) {
       this.createService.getAddressByCep(value)?.subscribe({
-        next: address => {
-          console.log(address);
-          //this.formEnterprise.controls['address'].controls['street'].setValue();
+        next: (address: any) => {
+          this.formEnterprise.controls['address'].controls['city'].setValue(address.localidade);
+          this.formEnterprise.controls['address'].controls['district'].setValue(address.bairro);
+          this.formEnterprise.controls['address'].controls['street'].setValue(address.logradouro);
+          let state: StatesBrazil = new StatesBrazil();
+          this.formEnterprise.controls['address'].controls['state'].setValue(state.getNameByUF(address.uf));
         }, error: err => {
           console.log(err);
         }
@@ -107,4 +113,7 @@ export class CreateComponent {
     }
   }
 
+  showToast() {
+    this.messageService.add({severity: 'success', summary: 'Sucesso!', detail: 'Cadastrado com Sucesso!'})
+  }
 }
